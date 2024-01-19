@@ -17,12 +17,19 @@ further transform filtered data before classification. This algorithm will have 
 validation.
 
 ## Datas
-The recordings are provides from [PhysioNet - EEG Motor Movement/Imagery Dataset](https://physionet.org/content/eegmmidb/1.0.0/).
+The records are provides from [PhysioNet - EEG Motor Movement/Imagery Dataset](https://physionet.org/content/eegmmidb/1.0.0/).
 
 The PhysioNet Resource’s original and ongoing missions were to conduct and catalyze for biomedical research and education, in part by offering free access to large collections of physiological and clinical data and related open-source software.
 
 ### Abstract
 This data set consists of over 1500 one- and two-minute EEG recordings, obtained from 109 volunteers, as described below.
+
+Total uncompressed size: 3.4 GB
+
+Total zip size: 1.9 GB
+
+> [!NOTE]
+> The data are provided here in EDF+ format (containing 64 EEG signals, each sampled at 160 samples per second, and an annotation channel).
 
 ### Experimental Protocol
 Subjects performed different motor/imagery tasks while 64-channel EEG were recorded using the BCI2000 system. Each subject performed 14 experimental runs: two one-minute baseline runs (one with eyes open, one with eyes closed), and three two-minute runs of each of the four following tasks:
@@ -48,8 +55,69 @@ Subjects performed different motor/imagery tasks while 64-channel EEG were recor
   - R13. Task 3
   - R14. Task 4
 
-> [!NOTE]
->The data are provided here in EDF+ format (containing 64 EEG signals, each sampled at 160 samples per second, and an annotation channel).
-> 
+- In addition for this project, I created 2 tasks witch is the addition of executive and imaginative tasks.
+  - Task 5 (addition of Task 1 and Task 2: imagine and execute opening and closing left or right fist)
+  - Task 6 (addition of Task 3 and Task 4: imagine and execute opening and closing both fists or both feet)
+> [!IMPORTANT]
+> It's not experimental, I only merge records of corresponding runs (3, 7, 11 and 4, 8, 12 for Task 5: Task 1 + Task 2).
+
 ### Montage
-The EEGs were recorded from 64 electrodes as per the international 10-10 system (excluding electrodes Nz, F9, F10, FT9, FT10, A1, A2, TP9, TP10, P9, and P10), as shown in this PDF figure. The numbers below each electrode name indicate the order in which they appear in the records; note that signals in the records are numbered from 0 to 63, while the numbers in the figure range from 1 to 64.
+The EEGs were recorded from 64 electrodes as per the international 10-10 system (excluding electrodes Nz, F9, F10, FT9, FT10, A1, A2, TP9, TP10, P9, and P10).
+![EEG montage picture](pictures/montage.png)
+
+## Run program
+The program is write and run using python3.
+
+`sudo apt update`
+
+`apt install python3-pip`
+
+Install all the requirements:
+
+`pip install -r requirements.txt`
+
+### Use case
+
+Run training on the entire dataset:
+
+`python3 tpv.v`
+
+Run prediction on the entire dataset:
+
+`python3 tpv.v -p`
+
+Run training for the subject nb 42 on the runs nb 6, 7, 8, 9 ([see runs](README.md#experimental-protocol)).
+
+`python3 tpv.py -s 42 -t 6 7 8 9`
+
+Run training for the subjects nb 1, 2, 3, 4, 5 on the motor execution: left vs right hand (task 1)
+
+
+```
+➜  tpv git:(master) ✗ python3 tpv.py -h               
+usage: PROG [-h] [-p] [-s [SUBJECTS ...]] [-r [RUNS ...] | -t [TASKS ...]] [-v [VERBOSE ...]]
+
+Total Perspective Vortex
+
+options:
+  -h, --help            show this help message and exit
+  -p, --predict         Perform prediction mode
+  -s [SUBJECTS ...], --subjects [SUBJECTS ...]
+                        List of subjects to train
+  -r [RUNS ...], --runs [RUNS ...]
+                        List of runs to train
+  -t [TASKS ...], --tasks [TASKS ...]
+                        List of tasks to train where:
+                        0 : Motor execution: left vs right hand - [3, 7, 11]
+                        1 : Motor imagery: left vs right hand - [4, 8, 12]
+                        2 : Motor execution: hands vs feet - [5, 9, 13]
+                        3 : Motor imagery: hands vs feet - [6, 10, 14]
+                        4 : Motor execution/imagery: left vs right hand - [3, 7, 11, 4, 8, 12]
+                        5 : Motor execution/imagery: hands vs feet - [5, 9, 13, 6, 10, 14]
+  -v [VERBOSE ...], --verbose [VERBOSE ...]
+                        Display graphs where:
+                        montage : electrodes montage
+                        filter : filter graph before/after
+                        graph : data, before and after filering
+                        mne : display all mne function log
+```
