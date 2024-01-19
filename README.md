@@ -59,7 +59,7 @@ Subjects performed different motor/imagery tasks while 64-channel EEG were recor
   - Task 5 (addition of Task 1 and Task 2: imagine and execute opening and closing left or right fist)
   - Task 6 (addition of Task 3 and Task 4: imagine and execute opening and closing both fists or both feet)
 > [!IMPORTANT]
-> It's not experimental, I only merge records of corresponding runs (3, 7, 11 and 4, 8, 12 for Task 5: Task 1 + Task 2).
+> It's not personal records. I only merge records of corresponding runs (3, 7, 11 and 4, 8, 12 for Task 5: Task 1 + Task 2).
 
 ### Montage
 The EEGs were recorded from 64 electrodes as per the international 10-10 system (excluding electrodes Nz, F9, F10, FT9, FT10, A1, A2, TP9, TP10, P9, and P10).
