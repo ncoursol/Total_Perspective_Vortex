@@ -78,21 +78,6 @@ Install all the requirements:
 
 ### Use case
 
-Run training on the entire dataset:
-
-`python3 tpv.v`
-
-Run prediction on the entire dataset:
-
-`python3 tpv.v -p`
-
-Run training for the subject nb 42 on the runs nb 6, 7, 8, 9 ([see runs](README.md#experimental-protocol)).
-
-`python3 tpv.py -s 42 -t 6 7 8 9`
-
-Run training for the subjects nb 1, 2, 3, 4, 5 on the motor execution: left vs right hand (task 1)
-
-
 ```
 ➜  tpv git:(master) ✗ python3 tpv.py -h               
 usage: PROG [-h] [-p] [-s [SUBJECTS ...]] [-r [RUNS ...] | -t [TASKS ...]] [-v [VERBOSE ...]]
@@ -121,3 +106,20 @@ options:
                         graph : data, before and after filering
                         mne : display all mne function log
 ```
+
+
+Run training on the entire dataset:
+
+`python3 tpv.v`
+
+Run prediction on the entire dataset:
+
+`python3 tpv.v -p`
+
+Run training for the subject nb 42 on the runs nb 6, 7, 8, 9 ([see runs](README.md#experimental-protocol)).
+
+`python3 tpv.py -s 42 -r 6 7 8 9`
+
+Run training for the subjects nb 1, 2, 3, 4, 5 on the motor execution: left vs right hand (task 1)
+
+`python3 tpv.py -s 1 2 3 4 5 -t 1`
