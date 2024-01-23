@@ -19,6 +19,8 @@ validation.
 ## Datas
 The records are provides from [PhysioNet - EEG Motor Movement/Imagery Dataset](https://physionet.org/content/eegmmidb/1.0.0/).
 
+With the original publication: [Schalk, G., McFarland, D.J., Hinterberger, T., Birbaumer, N., Wolpaw, J.R. BCI2000: A General-Purpose Brain-Computer Interface (BCI) System. IEEE Transactions on Biomedical Engineering 51(6):1034-1043, 2004.](https://pubmed.ncbi.nlm.nih.gov/15188875/)
+
 The PhysioNet Resource’s original and ongoing missions were to conduct and catalyze for biomedical research and education, in part by offering free access to large collections of physiological and clinical data and related open-source software.
 
 ### Abstract
