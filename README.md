@@ -65,6 +65,7 @@ Subjects performed different motor/imagery tasks while 64-channel EEG were recor
 
 ### Montage
 The EEGs were recorded from 64 electrodes as per the international 10-10 system (excluding electrodes Nz, F9, F10, FT9, FT10, A1, A2, TP9, TP10, P9, and P10).
+
 ![EEG montage picture](pictures/montage.png)
 
 ## Run program
@@ -109,7 +110,6 @@ options:
                         mne : display all mne function log
 ```
 
-
 Run training on the entire dataset:
 
 `python3 tpv.v`
@@ -125,3 +125,15 @@ Run training for the subject nb 42 on the runs nb 6, 7, 8, 9 ([see runs](README.
 Run training for the subjects nb 1, 2, 3, 4, 5 on the motor execution: left vs right hand (task 1)
 
 `python3 tpv.py -s 1 2 3 4 5 -t 1`
+
+### Screenshots
+
+Filtering by frequencies (low: 7Hz, high: 30Hz):
+
+![Before filtering](pictures/signal_before.png)
+
+![After filtering](pictures/signal_after.png)
+
+Result on records before/after filtering:
+
+![Graphs records](pictures/graph.png)

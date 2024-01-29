@@ -1,0 +1,7 @@
+numpy==1.22.0
+matplotlib==3.7.1
+seaborn==0.12.2
+sklearn==0.0
+tqdm==4.65.0
+pandas==2.0.0
+python-picard==0.7
